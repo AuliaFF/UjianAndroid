@@ -27,12 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent_list = new Intent(MainActivity.this, ListActivity.class);
 
-        int isian_umur = 30;
-        for(int i=1; i<= 30; isian_umur++){
-            System.out.print(isian_umur + " ");
-        }
-
-
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 String isian_nama_belakang = edNamaBelakang.getText().toString();
                 String isian_umur = edUmur.getText().toString();
 
+                int int_isian_umur = Integer.parseInt(isian_umur);
 
 
                 if(isian_nama_depan.isEmpty() || isian_nama_belakang.isEmpty() || isian_umur.isEmpty()){
@@ -47,7 +42,11 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     String nama_lengkap = isian_nama_depan.concat(" ").concat(isian_nama_belakang);
                     daftar_nama.clear();
-                    daftar_nama.add(nama_lengkap);
+
+                    for(int i = 1; i < int_isian_umur ; i++){
+                        daftar_nama.add(i + "." + nama_lengkap);
+                    }
+
                     edNamaDepan.setText("");
                     edNamaBelakang.setText("");
                     edUmur.setText("");
